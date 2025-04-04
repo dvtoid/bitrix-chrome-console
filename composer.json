@@ -1,0 +1,18 @@
+{
+    "name": "dvtoid/bitrix-chrome-console",
+    "type": "library",
+    "description": "Дебаг в консоли Google Chrome для 1С-Битрикс",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "php-console/php-console": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "BitrixChromeConsole\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}
