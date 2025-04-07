@@ -61,7 +61,13 @@ class Config
     public static function getPathForTag(): string
     {
         $debug = debug_backtrace();
-        $tags = str_replace($_SERVER['DOCUMENT_ROOT'], '', $debug[1]['file']) . ':' . $debug[1]['line'];
+
+        foreach ($debug as $key => $item) {
+            if (!str_contains($item['file'], 'dvtoid\bitrix-chrome-console')) {
+                $tags = str_replace($_SERVER['DOCUMENT_ROOT'], '', $debug[$key]['file']) . ':' . $debug[$key]['line'];
+                break;
+            }
+        }
 
         $conn = Connector::getInstance();
         $closuremethod = Closure::bind(function ($conn) {
